@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\Project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Thu May 15 14:24:23 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Thu May 15 14:41:41 2025
 <BR><P>
 <H3>Maximum Stack Usage =        120 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -242,14 +242,14 @@ Global Symbols
 
 <P><STRONG><a name="[b3]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
 
-<P><STRONG><a name="[9b]"></a>strstr</STRONG> (Thumb, 36 bytes, Stack size 12 bytes, strstr.o(.text))
+<P><STRONG><a name="[99]"></a>strstr</STRONG> (Thumb, 36 bytes, Stack size 12 bytes, strstr.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = strstr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_check_cmd
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_check_cmd
 </UL>
 
 <P><STRONG><a name="[ab]"></a>strlen</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, strlen.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi_usart3_printf
+<BR><BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi_usart3_printf
 </UL>
 
 <P><STRONG><a name="[b4]"></a>__aeabi_uidiv</STRONG> (Thumb, 0 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
@@ -524,9 +524,9 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_Adc_Average
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_send_data
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_send_cmd
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_quit_connect
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_init
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_send_cmd
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_quit_connect
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_init
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Rst
 </UL>
 
@@ -854,7 +854,7 @@ Global Symbols
 <P><STRONG><a name="[83]"></a>USART_GetFlagStatus</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_GetFlagStatus))
 <BR><BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fputc
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_SendByte
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi_usart3_printf
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi_usart3_printf
 </UL>
 
 <P><STRONG><a name="[86]"></a>USART_GetITStatus</STRONG> (Thumb, 84 bytes, Stack size 16 bytes, stm32f10x_usart.o(i.USART_GetITStatus))
@@ -888,7 +888,7 @@ Global Symbols
 <P><STRONG><a name="[82]"></a>USART_SendData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_SendData))
 <BR><BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fputc
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_SendByte
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi_usart3_printf
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi_usart3_printf
 </UL>
 
 <P><STRONG><a name="[5]"></a>UsageFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_it.o(i.UsageFault_Handler))
@@ -922,12 +922,12 @@ Global Symbols
 
 <P><STRONG><a name="[bc]"></a>__1printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0printf), UNUSED)
 
-<P><STRONG><a name="[9f]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0printf))
+<P><STRONG><a name="[9e]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0printf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_send_data
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_send_cmd
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_quit_connect
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_send_cmd
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_quit_connect
 </UL>
 
 <P><STRONG><a name="[bd]"></a>__c89printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0printf), UNUSED)
@@ -965,7 +965,7 @@ Global Symbols
 <P><STRONG><a name="[aa]"></a>vsprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0vsprintf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = vsprintf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi_usart3_printf
+<BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi_usart3_printf
 </UL>
 
 <P><STRONG><a name="[c5]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
@@ -1003,77 +1003,77 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[98]"></a>esp_32c3_ap</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, esp32_c3.o(i.esp_32c3_ap))
-<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = esp_32c3_ap &rArr; esp_32c3_send_cmd &rArr; wifi_usart3_printf &rArr; vsprintf
-</UL>
-<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_send_cmd
-</UL>
-<BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_start_init
-</UL>
-
-<P><STRONG><a name="[9a]"></a>esp_32c3_check_cmd</STRONG> (Thumb, 20 bytes, Stack size 16 bytes, esp32_c3.o(i.esp_32c3_check_cmd))
+<P><STRONG><a name="[98]"></a>esp_32c3_check_cmd</STRONG> (Thumb, 20 bytes, Stack size 16 bytes, esp32_c3.o(i.esp_32c3_check_cmd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = esp_32c3_check_cmd &rArr; strstr
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strstr
+<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strstr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_send_cmd
+<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_send_cmd
 </UL>
 
-<P><STRONG><a name="[9c]"></a>esp_32c3_init</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, esp32_c3.o(i.esp_32c3_init))
+<P><STRONG><a name="[9a]"></a>esp_32c3_init</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, esp32_c3.o(i.esp_32c3_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = esp_32c3_init &rArr; esp_32c3_send_cmd &rArr; wifi_usart3_printf &rArr; vsprintf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_send_cmd
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_send_cmd
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[9d]"></a>esp_32c3_quit_connect</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, esp32_c3.o(i.esp_32c3_quit_connect))
+<P><STRONG><a name="[9c]"></a>esp_32c3_quit_connect</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, esp32_c3.o(i.esp_32c3_quit_connect))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = esp_32c3_quit_connect &rArr; esp_32c3_send_cmd &rArr; wifi_usart3_printf &rArr; vsprintf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi_usart3_printf
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_send_cmd
+<BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi_usart3_printf
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_send_cmd
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_quit_init
+<BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_quit_init
 </UL>
 
-<P><STRONG><a name="[a0]"></a>esp_32c3_quit_init</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, esp32_c3.o(i.esp_32c3_quit_init))
+<P><STRONG><a name="[9f]"></a>esp_32c3_quit_init</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, esp32_c3.o(i.esp_32c3_quit_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = esp_32c3_quit_init &rArr; esp_32c3_quit_connect &rArr; esp_32c3_send_cmd &rArr; wifi_usart3_printf &rArr; vsprintf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_quit_connect
+<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_quit_connect
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[99]"></a>esp_32c3_send_cmd</STRONG> (Thumb, 82 bytes, Stack size 24 bytes, esp32_c3.o(i.esp_32c3_send_cmd))
+<P><STRONG><a name="[9b]"></a>esp_32c3_send_cmd</STRONG> (Thumb, 82 bytes, Stack size 24 bytes, esp32_c3.o(i.esp_32c3_send_cmd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = esp_32c3_send_cmd &rArr; wifi_usart3_printf &rArr; vsprintf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi_usart3_printf
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_check_cmd
+<BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi_usart3_printf
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_check_cmd
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_quit_connect
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_init
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_ap
+<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_start_connect
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_quit_connect
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_init
 </UL>
 
 <P><STRONG><a name="[77]"></a>esp_32c3_send_data</STRONG> (Thumb, 70 bytes, Stack size 24 bytes, esp32_c3.o(i.esp_32c3_send_data))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = esp_32c3_send_data &rArr; wifi_usart3_printf &rArr; vsprintf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi_usart3_printf
+<BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi_usart3_printf
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Main_DoSomething
 </UL>
 
-<P><STRONG><a name="[a1]"></a>esp_32c3_start_init</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, esp32_c3.o(i.esp_32c3_start_init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = esp_32c3_start_init &rArr; esp_32c3_ap &rArr; esp_32c3_send_cmd &rArr; wifi_usart3_printf &rArr; vsprintf
+<P><STRONG><a name="[a0]"></a>esp_32c3_start_connect</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, esp32_c3.o(i.esp_32c3_start_connect))
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = esp_32c3_start_connect &rArr; esp_32c3_send_cmd &rArr; wifi_usart3_printf &rArr; vsprintf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_ap
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_send_cmd
+</UL>
+<BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_start_init
+</UL>
+
+<P><STRONG><a name="[a1]"></a>esp_32c3_start_init</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, esp32_c3.o(i.esp_32c3_start_init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = esp_32c3_start_init &rArr; esp_32c3_start_connect &rArr; esp_32c3_send_cmd &rArr; wifi_usart3_printf &rArr; vsprintf
+</UL>
+<BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_start_connect
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1137,8 +1137,8 @@ Global Symbols
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart3_init
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart1_init
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_start_init
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_quit_init
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_init
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_quit_init
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_init
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read_Data
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Init
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
@@ -1174,7 +1174,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[9e]"></a>wifi_usart3_printf</STRONG> (Thumb, 72 bytes, Stack size 32 bytes, usart3.o(i.wifi_usart3_printf))
+<P><STRONG><a name="[9d]"></a>wifi_usart3_printf</STRONG> (Thumb, 72 bytes, Stack size 32 bytes, usart3.o(i.wifi_usart3_printf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = wifi_usart3_printf &rArr; vsprintf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
@@ -1183,8 +1183,8 @@ Global Symbols
 <LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vsprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_send_data
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_send_cmd
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_quit_connect
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_send_cmd
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_32c3_quit_connect
 </UL>
 <P>
 <H3>
