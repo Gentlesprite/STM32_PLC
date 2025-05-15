@@ -734,11 +734,6 @@
               <FilePath>.\Hardware\Serial.h</FilePath>
             </File>
             <File>
-              <FileName>HC05.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\HardWare\HC05.c</FilePath>
-            </File>
-            <File>
               <FileName>HC05.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\HardWare\HC05.h</FilePath>
@@ -787,6 +782,11 @@
               <FileName>OLED_I2C.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Hardware\OLED_I2C.c</FilePath>
+            </File>
+            <File>
+              <FileName>debug_utils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\debug_utils.c</FilePath>
             </File>
           </Files>
         </Group>
