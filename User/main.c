@@ -87,7 +87,7 @@ int main(void)
 	  OLED_Init();             //OLED液晶初始化
 	  Adc_Init();
 	  OLED_CLS();              //清屏
-	//OLED_ShowStr(0, 2, "   loading...   ", 2,0);//显示加载中
+	OLED_ShowStr(0, 2, "   loading...   ", 2,0);//显示加载中
 	usart1_init(115200);
 	usart3_init(115200);
 	esp_32c3_init();
@@ -107,8 +107,7 @@ int main(void)
 }
 void 	Main_DoSomething(void)
 {
-		esp_32c3_send_data("卢治宇 2024304066",50);// 将温度和湿度格式化为字符串
-    sprintf(sendBuffer, "温度:%d℃ 湿度:%d%%RH", temperature, humidity);
+		sprintf(sendBuffer, "温度:%d℃ 湿度:%d%%RH 土壤湿度:%d%%", temperature, humidity, soilMoisture);
     esp_32c3_send_data(sendBuffer, 50);// 发送温湿度数据
 }
 

@@ -24,7 +24,8 @@ void esp_32c3_quit_init(void)
 void esp_32c3_start_init(void)
 {
     // 例如：启动连接的初始化
-    esp_32c3_start_connect();
+    //esp_32c3_start_connect();
+	esp_32c3_ap();
 }
 
 u8 esp_32c3_send_cmd(u8 *cmd,u8 *ack,u16 waittime)
@@ -86,7 +87,7 @@ u8* esp_32c3_send_data(u8 *string,u16 waittime)
 void esp_32c3_init(void)
 {
 	//设置工作模式 1：station模式   2：AP模式  3：兼容 AP+station模式
-	esp_32c3_send_cmd("AT+CWMODE=1","OK",50);
+	esp_32c3_send_cmd("AT+CWMODE=2","OK",50);
 	//让Wifi模块重启的命令
 	esp_32c3_send_cmd("AT+RST","ready",20);
 	Delay_ms(1000);         //延时3S等待重启成功
@@ -95,8 +96,31 @@ void esp_32c3_init(void)
 	Delay_ms(1000);
 }
 
-void esp_32c3_start_connect(void)
+void esp_32c3_ap(void)
 {
+    // 设置WiFi模式为AP模式 (1=STA, 2=AP, 3=STA+AP)
+    //esp_32c3_send_cmd("AT+CWMODE=2", "OK", 200);
+    
+    // 配置AP参数: SSID,密码,通道号,加密方式
+    // SSID: ESP32_AP
+    // 密码: 12345678
+    // 通道: 5
+    // 加密方式: WPA2_PSK (3)
+	esp_32c3_send_cmd("AT+CWSAP?","OK", 500);
+    esp_32c3_send_cmd("AT+CWSAP=\"LZY\",\"12345678\",5,3", "OK", 500);
+    
+    // 启用多连接
+    esp_32c3_send_cmd("AT+CIPMUX=1", "OK", 200);
+    
+    // 启动服务器，端口8080
+    while(esp_32c3_send_cmd("AT+CIPSERVER=1,8080", "OK", 200));
+    
+    // 获取AP IP地址（可选）
+    esp_32c3_send_cmd("AT+CIPAP?", "OK", 200);
+}
+
+void esp_32c3_start_connect(void){
+	
 	//让模块连接上路由（用户自己定义）
 //其中TP-LINK_123456为WiFi名，123456为密码，将其替换为你的WiFi
 //while();  在stm32中为等待含义
@@ -114,6 +138,7 @@ while(esp_32c3_send_cmd("AT+CIPSTART=\"TCP\",\"192.168.0.123\",8086","CONNECT",2
 	//透传模式下 开始发送数据的指令 这个指令之后就可以直接发数据了
 	esp_32c3_send_cmd("AT+CIPSEND","OK",50);
 }
+
 
 //esp_32c3退出透传模式   返回值:0,退出成功;1,退出失败
 //通过向wifi模块连续发送3个+（每个+号之间 超过10ms,这样认为是连续三次发送+）

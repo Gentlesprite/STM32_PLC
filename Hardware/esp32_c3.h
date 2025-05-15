@@ -30,6 +30,7 @@ void esp_32c3_init(void);
 void esp_32c3_start_connect(void);
 void esp_32c3_quit_init(void);
 void esp_32c3_start_init(void);
+void esp_32c3_ap(void);
 
 u8 esp_32c3_quit_connect(void);
 
