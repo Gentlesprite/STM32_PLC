@@ -93,7 +93,6 @@ void USART1_IRQHandler(void)
 }
 
 
-/*使用microLib的方法*/
 int fputc(int ch, FILE *f)
 {
 	USART_SendData(USART1, (uint8_t) ch);

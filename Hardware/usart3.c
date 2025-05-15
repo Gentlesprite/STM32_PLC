@@ -75,6 +75,14 @@ void USART3_IRQHandler(void)
   }										 
 }  
 
+void USART3_Print(char *str) {
+    while (*str) {
+        USART_SendData(USART3, *str++);
+        while (USART_GetFlagStatus(USART3, USART_FLAG_TC) == RESET);
+    }
+}
+
 //cmd:发送的命令字符串;ack:期待的应答结果,如果为空,则表示不需要等待应答;waittime:等待时间(单位:10ms)
 //返回值:0,发送成功(得到了期待的应答结果);1,发送失败
 
+/*使用microLib的方法*/

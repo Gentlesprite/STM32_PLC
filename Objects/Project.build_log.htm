@@ -26,18 +26,14 @@ Project File Date:  05/15/2025
 
 <h2>Output:</h2>
 Build target 'Target 1'
-compiling esp32_c3.c...
-Hardware\esp32_c3.c(35): warning:  #223-D: function "wifi_usart3_printf" declared implicitly
-        wifi_usart3_printf("%s\r\n",cmd);       //发送命令
-Hardware\esp32_c3.c(72): warning:  #223-D: function "wifi_usart3_printf" declared implicitly
-        wifi_usart3_printf((char *)string);
-Hardware\esp32_c3.c(151): warning:  #223-D: function "wifi_usart3_printf" declared implicitly
-        wifi_usart3_printf("+++");//退出透传模式
-Hardware\esp32_c3.c: 3 warnings, 0 errors
+compiling main.c...
+User\main.c(112): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "u8 *"
+     esp_32c3_send_data(sendBuffer, 50);// 发送温湿度数据
+User\main.c: 1 warning, 0 errors
 linking...
-Program Size: Code=10804 RO-data=2340 RW-data=728 ZI-data=1896  
+Program Size: Code=10836 RO-data=2340 RW-data=728 ZI-data=1896  
 FromELF: creating hex file...
-".\Objects\Project.axf" - 0 Error(s), 3 Warning(s).
+".\Objects\Project.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   E:\文件夹\文件\工商\大三下\无线通信技术\课程设计A\RTE

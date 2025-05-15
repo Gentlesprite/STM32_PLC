@@ -83,32 +83,33 @@ int main(void)
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	DelayInit();
 	LED_Init();
-		  I2C_Configuration();     //IIC初始化
-	  OLED_Init();             //OLED液晶初始化
-	  Adc_Init();
-	  OLED_CLS();              //清屏
+	I2C_Configuration();     //IIC初始化
+	OLED_Init();             //OLED液晶初始化
+	Adc_Init();
+	OLED_CLS();              //清屏
 	OLED_ShowStr(0, 2, "   loading...   ", 2,0);//显示加载中
 	usart1_init(115200);
 	usart3_init(115200);
 	esp_32c3_init();
+	esp_32c3_send_cmd("AT+CWQAP","0K",200);
 	esp_32c3_quit_init();
 	esp_32c3_start_init();
 	DHT11_Init();
 	Main_DoSomething();
-			OLED_CLS();              //清屏
-	  InitDisplay();
+	OLED_CLS();              //清屏
+	InitDisplay();
 	while (1)
 	{
 		DHT11_Read_Data(&temperature,&humidity);
 		Main_DoSomething();
-										 displayDHT11TempAndHumi();
-							   displaySoilMoisture();
+		displayDHT11TempAndHumi();
+		displaySoilMoisture();
 		}
 }
 void 	Main_DoSomething(void)
 {
-		sprintf(sendBuffer, "温度:%d℃ 湿度:%d%%RH 土壤湿度:%d%%", temperature, humidity, soilMoisture);
-    esp_32c3_send_data(sendBuffer, 50);// 发送温湿度数据
+	sprintf(sendBuffer, "温度:%d℃ 湿度:%d%%RH 土壤湿度:%d%%RH", temperature, humidity, soilMoisture);
+   esp_32c3_send_data(sendBuffer, 50);// 发送温湿度数据
 }
 
 
