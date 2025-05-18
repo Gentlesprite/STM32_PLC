@@ -35,6 +35,8 @@
 .\objects\main.o: .\Hardware\DHT11.h
 .\objects\main.o: .\Hardware\sys.h
 .\objects\main.o: .\Hardware\usart1.h
+.\objects\main.o: .\Hardware\usart2.h
+.\objects\main.o: .\Hardware\usart2.h
 .\objects\main.o: .\Hardware\usart3.h
 .\objects\main.o: D:\software\keil\mdk\ARM\ARMCC\Bin\..\include\stdarg.h
 .\objects\main.o: D:\software\keil\mdk\ARM\ARMCC\Bin\..\include\string.h

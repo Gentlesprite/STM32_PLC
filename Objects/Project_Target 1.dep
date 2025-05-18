@@ -839,11 +839,8 @@ I (.\Library\stm32f10x_wwdg.h)(0x67D6D66C)
 I (.\Library\misc.h)(0x67D6D66C)
 I (.\System\Delay.h)(0x680E37A2)
 F (.\Hardware\Key.h)(0x67D6D66C)()
-F (.\Hardware\OLED.h)(0x00000000)()
-F (.\Hardware\OLED_Font.h)(0x00000000)()
 F (.\Hardware\Serial.c)(0x680EE28C)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I.\Start -I.\Library -I.\User -I.\System -I.\Hardware --no-multibyte-chars-I E:\文件夹\文件\工商\大三下\无线通信技术\课程设计A\RTE-I D:\software\keil\mdk\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0-I D:\software\keil\mdk\ARM\CMSIS\Include-I D:\software\keil\mdk\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\serial.o --omf_browse .\objects\serial.crf --depend .\objects\serial.d)
 F (.\Hardware\Serial.h)(0x680F268B)()
-F (.\HardWare\HC05.h)(0x680E2FFC)()
 F (.\Hardware\DHT11.c)(0x67D7A60A)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I.\Start -I.\Library -I.\User -I.\System -I.\Hardware --no-multibyte-chars-I E:\文件夹\文件\工商\大三下\无线通信技术\课程设计A\RTE-I D:\software\keil\mdk\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0-I D:\software\keil\mdk\ARM\CMSIS\Include-I D:\software\keil\mdk\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\dht11.o --omf_browse .\objects\dht11.crf --depend .\objects\dht11.d)
 I (Hardware\dht11.h)(0x67A74DD4)
 I (Hardware\sys.h)(0x669A57E6)
@@ -1074,10 +1071,9 @@ I (.\Library\stm32f10x_usart.h)(0x67D6D66C)
 I (.\Library\stm32f10x_wwdg.h)(0x67D6D66C)
 I (.\Library\misc.h)(0x67D6D66C)
 I (.\System\delay.h)(0x680E37A2)
-I (Hardware\codetab.h)(0x63A54E0C)
-F (.\Hardware\debug_utils.c)(0x6825911B)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I.\Start -I.\Library -I.\User -I.\System -I.\Hardware --no-multibyte-chars-I E:\文件夹\文件\工商\大三下\无线通信技术\课程设计A\RTE-I D:\software\keil\mdk\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0-I D:\software\keil\mdk\ARM\CMSIS\Include-I D:\software\keil\mdk\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\debug_utils.o --omf_browse .\objects\debug_utils.crf --depend .\objects\debug_utils.d)
-I (Hardware\debug_utils.h)(0x682590A7)
-I (Hardware\usart1.h)(0x68259362)
+I (Hardware\codetab.h)(0x6829E159)
+F (.\Hardware\usart2.c)(0x6829D6E8)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I.\Start -I.\Library -I.\User -I.\System -I.\Hardware --no-multibyte-chars-I E:\文件夹\文件\工商\大三下\无线通信技术\课程设计A\RTE-I D:\software\keil\mdk\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0-I D:\software\keil\mdk\ARM\CMSIS\Include-I D:\software\keil\mdk\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\usart2.o --omf_browse .\objects\usart2.crf --depend .\objects\usart2.d)
+I (Hardware\usart2.h)(0x6829D905)
 I (.\Start\stm32f10x.h)(0x67E2A724)
 I (.\Start\core_cm3.h)(0x67D6D670)
 I (D:\software\keil\mdk\ARM\ARMCC\include\stdint.h)(0x5475F300)
@@ -1106,11 +1102,7 @@ I (.\Library\stm32f10x_tim.h)(0x67D6D66C)
 I (.\Library\stm32f10x_usart.h)(0x67D6D66C)
 I (.\Library\stm32f10x_wwdg.h)(0x67D6D66C)
 I (.\Library\misc.h)(0x67D6D66C)
-I (D:\software\keil\mdk\ARM\ARMCC\include\stdio.h)(0x5475F300)
-I (Hardware\usart3.h)(0x680F78CC)
-I (D:\software\keil\mdk\ARM\ARMCC\include\stdarg.h)(0x5475F2FA)
-I (D:\software\keil\mdk\ARM\ARMCC\include\string.h)(0x5475F300)
-F (.\User\main.c)(0x6825A5AB)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I.\Start -I.\Library -I.\User -I.\System -I.\Hardware --no-multibyte-chars-I E:\文件夹\文件\工商\大三下\无线通信技术\课程设计A\RTE-I D:\software\keil\mdk\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0-I D:\software\keil\mdk\ARM\CMSIS\Include-I D:\software\keil\mdk\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\User\main.c)(0x6829E417)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I.\Start -I.\Library -I.\User -I.\System -I.\Hardware --no-multibyte-chars-I E:\文件夹\文件\工商\大三下\无线通信技术\课程设计A\RTE-I D:\software\keil\mdk\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0-I D:\software\keil\mdk\ARM\CMSIS\Include-I D:\software\keil\mdk\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (.\Start\stm32f10x.h)(0x67E2A724)
 I (.\Start\core_cm3.h)(0x67D6D670)
 I (D:\software\keil\mdk\ARM\ARMCC\include\stdint.h)(0x5475F300)
@@ -1146,6 +1138,7 @@ I (D:\software\keil\mdk\ARM\ARMCC\include\stdio.h)(0x5475F300)
 I (.\Hardware\DHT11.h)(0x67A74DD4)
 I (.\Hardware\sys.h)(0x669A57E6)
 I (.\Hardware\usart1.h)(0x68259362)
+I (.\Hardware\usart2.h)(0x6829D905)
 I (.\Hardware\usart3.h)(0x680F78CC)
 I (D:\software\keil\mdk\ARM\ARMCC\include\stdarg.h)(0x5475F2FA)
 I (D:\software\keil\mdk\ARM\ARMCC\include\string.h)(0x5475F300)
