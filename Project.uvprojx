@@ -714,16 +714,6 @@
               <FilePath>.\Hardware\Key.h</FilePath>
             </File>
             <File>
-              <FileName>OLED.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Hardware\OLED.h</FilePath>
-            </File>
-            <File>
-              <FileName>OLED_Font.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Hardware\OLED_Font.h</FilePath>
-            </File>
-            <File>
               <FileName>Serial.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Hardware\Serial.c</FilePath>
@@ -732,11 +722,6 @@
               <FileName>Serial.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Hardware\Serial.h</FilePath>
-            </File>
-            <File>
-              <FileName>HC05.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\HardWare\HC05.h</FilePath>
             </File>
             <File>
               <FileName>DHT11.c</FileName>
@@ -784,9 +769,14 @@
               <FilePath>.\Hardware\OLED_I2C.c</FilePath>
             </File>
             <File>
-              <FileName>debug_utils.c</FileName>
+              <FileName>usart2.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Hardware\debug_utils.c</FilePath>
+              <FilePath>.\Hardware\usart2.c</FilePath>
+            </File>
+            <File>
+              <FileName>timer1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\timer1.c</FilePath>
             </File>
           </Files>
         </Group>

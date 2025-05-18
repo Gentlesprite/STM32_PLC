@@ -43,5 +43,6 @@
 .\objects\main.o: .\Hardware\esp32_c3.h
 .\objects\main.o: .\Hardware\adc.h
 .\objects\main.o: .\Hardware\OLED_I2C.h
+.\objects\main.o: .\Hardware\timer1.h
 .\objects\main.o: D:\software\keil\mdk\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\main.o: D:\software\keil\mdk\ARM\ARMCC\Bin\..\include\stdbool.h

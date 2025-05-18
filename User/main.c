@@ -10,13 +10,19 @@
 #include "LED.h"
 #include "adc.h"
 #include "OLED_I2C.h"
+#include "timer1.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+//设定的默认报警阈值
+u8 temp_threshold = 40;
+int soil_threshold = 13;
+uint16_t co2_threshold = 400;
 
 char sendBuffer[50];
-void Main_DoSomething(void);
+void send_normal_data_to_app(void);
+void env_check(u8 temp,int soil,uint16_t co2);
 typedef unsigned char u8;
 char rxdata[100]="n";
 u8 temperature;
@@ -117,16 +123,37 @@ int main(void)
 	{
 		DHT11_Read_Data(&temperature,&humidity);
 		CO2GetData(&co2);
-		Main_DoSomething();
+		send_normal_data_to_app();
 		displayDHT11TempAndHumi();
 		displaySoilMoisture();
 		displayCO2();
+		env_check(temperature,soilMoisture,co2);
 		}
 }
-void 	Main_DoSomething(void)
-{
-	sprintf(sendBuffer, "温度:%d℃ 湿度:%d%%RH 土壤湿度:%d%%RH 二氧化碳浓度:%dppm", temperature, humidity, soilMoisture,co2);
+void send_normal_data_to_app(){
+	 sprintf(sendBuffer, "温度:%d℃ 湿度:%d%%RH 土壤湿度:%d%%RH 二氧化碳浓度:%dppm", temperature, humidity, soilMoisture,co2);
    esp_32c3_send_data(sendBuffer, 50);// 发送温湿度数据
 }
 
 
+void env_check(u8 temp, int soil, uint16_t co2) {
+    if (temp > temp_threshold) {
+        sprintf(sendBuffer, "温度超过阈值%d", temp_threshold);
+        esp_32c3_send_data((u8 *)sendBuffer, 50);
+			//操作继电器
+    }
+    if (soil > soil_threshold) {
+        sprintf(sendBuffer, "湿度超过阈值%d", soil_threshold);
+        esp_32c3_send_data((u8 *)sendBuffer, 50);
+			//操作继电器
+    }
+    if (co2 > co2_threshold) {
+        sprintf(sendBuffer, "二氧化碳超过阈值%d", co2_threshold);
+        esp_32c3_send_data((u8 *)sendBuffer, 50);
+        LED1_ON();
+			//让蜂鸣器报警几次?
+    }
+    if (co2 < co2_threshold) {
+        LED1_OFF();
+    }
+}

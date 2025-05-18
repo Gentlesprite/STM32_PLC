@@ -58,10 +58,31 @@ void USART3_IRQHandler(void)
 	if(USART_GetITStatus(USART3, USART_IT_RXNE) != RESET)//接收到数据
 	{	 
 	   res =USART_ReceiveData(USART3);		
-	if (res == 'A')
-		LED2_ON();
-	if (res == 'B')
-		LED2_OFF();
+	if (res == 'A')LED2_ON();
+		
+	if (res == 'B')LED2_OFF();
+		
+	//如果用户发送设定阈值的数据
+		/*
+		temp:代表温度阈值
+		soil:代表土壤湿度阈值
+		co2:代表二氧化碳阈值
+		命令格式
+		temp 30 代表温度超过30度操作继电器:比如可以连一个风扇进行降温？
+		soil 10 此处的土壤湿润应该是代表小于10的意思，代表土壤湿润如果小于10则继电器驱动水泵自动浇水
+		co2 400 代表二氧化碳超过400 进行操作
+		然后解析命令
+		
+		这是主函数在开头设定的默认报警阈值
+		u8 temp_threshold = 40;
+		int soil_threshold = 13;
+		uint16_t co2_threshold = 400;
+		
+		把解析的命令赋值给对应的变量
+		
+		*/
+		
+		
 	  if((USART3_RX_STA&(1<<15))==0)//接收完的一批数据,还没有被处理,则不再接收其他数据
 	 { 
 		if(USART3_RX_STA<USART3_MAX_RECV_LEN)		//还可以接收数据
