@@ -33,3 +33,4 @@
 .\objects\usart3.o: D:\software\keil\mdk\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\usart3.o: D:\software\keil\mdk\ARM\ARMCC\Bin\..\include\string.h
 .\objects\usart3.o: Hardware\LED.h
+.\objects\usart3.o: D:\software\keil\mdk\ARM\ARMCC\Bin\..\include\stdlib.h

@@ -10,7 +10,6 @@
 #include "LED.h"
 #include "adc.h"
 #include "OLED_I2C.h"
-#include "timer1.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -19,7 +18,7 @@
 u8 temp_threshold = 40;
 int soil_threshold = 13;
 uint16_t co2_threshold = 400;
-
+extern u8 USART3_RX_FLAG;
 char sendBuffer[50];
 void send_normal_data_to_app(void);
 void env_check(u8 temp,int soil,uint16_t co2);
@@ -97,6 +96,49 @@ void displayCO2(void)    //显示二氧化碳浓度
     OLED_ShowChar(94,6,co2%10+'0',2,0);       //个位
     OLED_ShowStr(102,6,"ppm",2,0);          //单位
 }
+// 解析接收到的命令
+void ParseCommand(char* cmd) {
+    char* token;
+    char* rest = cmd;
+    
+    // 获取第一个token（命令类型）
+    token = strtok_r(rest, " ", &rest);
+    
+    if (token == NULL) return;
+    
+    if (strcmp(token, "temp") == 0) {
+        // 温度阈值设置
+        token = strtok_r(rest, " ", &rest);
+        if (token != NULL) {
+            temp_threshold = atoi(token);
+						sprintf(sendBuffer, "设置温度阈值为:%s", token);
+						esp_32c3_send_data(sendBuffer, 50);// 发送温湿度数据
+        }
+    }
+    else if (strcmp(token, "soil") == 0) {
+        // 土壤湿度阈值设置
+        token = strtok_r(rest, " ", &rest);
+        if (token != NULL) {
+            soil_threshold = atoi(token);
+						sprintf(sendBuffer, "设置土壤湿度阈值为:%s", token);
+						esp_32c3_send_data(sendBuffer, 50);// 发送温湿度数据
+        }
+    }
+    else if (strcmp(token, "co") == 0) {
+        // CO2阈值设置
+        token = strtok_r(rest, " ", &rest);
+        if (token != NULL) {
+            co2_threshold = atoi(token);
+						sprintf(sendBuffer, "设置二氧化碳阈值为:%s", token);
+						esp_32c3_send_data(sendBuffer, 50);// 发送温湿度数据
+        }
+    }
+    else {
+        USART3_Print("Unknown command: ");
+        USART3_Print(cmd);
+        USART3_Print("\r\n");
+    }
+}
 int main(void)
 {
 	unsigned char i=0;
@@ -121,9 +163,26 @@ int main(void)
 	InitDisplay();
 	while (1)
 	{
+if(USART3_RX_FLAG) {
+    // 确保添加终止符不会越界
+    if(USART3_RX_STA < sizeof(USART3_RX_BUF)) {
+        USART3_RX_BUF[USART3_RX_STA] = '\0';
+    } else {
+        USART3_RX_BUF[sizeof(USART3_RX_BUF)-1] = '\0';
+    }
+    
+    ParseCommand((char*)USART3_RX_BUF);
+    
+    // 清空接收缓冲区
+    memset(USART3_RX_BUF, 0, sizeof(USART3_RX_BUF));
+    USART3_RX_STA = 0;
+    USART3_RX_FLAG = 0;
+		    // 增加处理后的延迟
+    Delay_ms(100);
+}
 		DHT11_Read_Data(&temperature,&humidity);
 		CO2GetData(&co2);
-		send_normal_data_to_app();
+		//send_normal_data_to_app();
 		displayDHT11TempAndHumi();
 		displaySoilMoisture();
 		displayCO2();
@@ -143,7 +202,7 @@ void env_check(u8 temp, int soil, uint16_t co2) {
 			//操作继电器
     }
     if (soil > soil_threshold) {
-        sprintf(sendBuffer, "湿度超过阈值%d", soil_threshold);
+        sprintf(sendBuffer, "土壤湿度超过阈值%d", soil_threshold);
         esp_32c3_send_data((u8 *)sendBuffer, 50);
 			//操作继电器
     }
