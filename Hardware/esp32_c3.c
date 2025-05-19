@@ -115,7 +115,7 @@ void esp_32c3_ap(void)
     while(esp_32c3_send_cmd("AT+CIPSERVER=1,8080", "OK", 200));
 	
 		//是否开启透传模式  0：表示关闭 1：表示开启透传
-	esp_32c3_send_cmd("AT+CIPMODE=1","OK",200);
+		esp_32c3_send_cmd("AT+CIPMODE=1","OK",200);
 	
 	//透传模式下 开始发送数据的指令 这个指令之后就可以直接发数据了
 	esp_32c3_send_cmd("AT+CIPSEND","OK",50);

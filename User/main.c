@@ -112,7 +112,7 @@ void ParseCommand(char* cmd) {
         if (token != NULL) {
             temp_threshold = atoi(token);
 						sprintf(sendBuffer, "设置温度阈值为:%s", token);
-						esp_32c3_send_data(sendBuffer, 50);// 发送温湿度数据
+						esp_32c3_send_data(sendBuffer, 50);
         }
     }
     else if (strcmp(token, "soil") == 0) {
@@ -121,22 +121,26 @@ void ParseCommand(char* cmd) {
         if (token != NULL) {
             soil_threshold = atoi(token);
 						sprintf(sendBuffer, "设置土壤湿度阈值为:%s", token);
-						esp_32c3_send_data(sendBuffer, 50);// 发送温湿度数据
+						esp_32c3_send_data(sendBuffer, 50);
         }
     }
-    else if (strcmp(token, "co") == 0) {
+    else if (strcmp(token, "co2") == 0) {
         // CO2阈值设置
         token = strtok_r(rest, " ", &rest);
         if (token != NULL) {
             co2_threshold = atoi(token);
 						sprintf(sendBuffer, "设置二氧化碳阈值为:%s", token);
-						esp_32c3_send_data(sendBuffer, 50);// 发送温湿度数据
+						esp_32c3_send_data(sendBuffer, 50);
         }
     }
+		else if (strcmp(token, "data") == 0){
+			sprintf(sendBuffer, "温度:%d℃ 湿度:%d%%RH 土壤湿度:%d%%RH 二氧化碳浓度:%dppm", temperature, humidity, soilMoisture,co2);
+			esp_32c3_send_data(sendBuffer, 50);
+		}
     else {
-        USART3_Print("Unknown command: ");
-        USART3_Print(cmd);
-        USART3_Print("\r\n");
+			sprintf(sendBuffer,"\t\r\n↓↓↓支持的命令↓↓↓\r\n[temp value] - 设置温度的报警阈值。\r\n[soil value] - 设置土壤湿度的报警阈值。\r\n[co2 value] - 设置二氧化碳的报警阈值。\r\n[data] - 获取当前环境的信息。");
+			esp_32c3_send_data(sendBuffer, 100);
+			
     }
 }
 int main(void)
@@ -189,26 +193,26 @@ if(USART3_RX_FLAG) {
 		env_check(temperature,soilMoisture,co2);
 		}
 }
-void send_normal_data_to_app(){
-	 sprintf(sendBuffer, "温度:%d℃ 湿度:%d%%RH 土壤湿度:%d%%RH 二氧化碳浓度:%dppm", temperature, humidity, soilMoisture,co2);
-   esp_32c3_send_data(sendBuffer, 50);// 发送温湿度数据
-}
+
 
 
 void env_check(u8 temp, int soil, uint16_t co2) {
     if (temp > temp_threshold) {
         sprintf(sendBuffer, "温度超过阈值%d", temp_threshold);
         esp_32c3_send_data((u8 *)sendBuffer, 50);
+				Delay_ms(500);
 			//操作继电器
     }
     if (soil > soil_threshold) {
         sprintf(sendBuffer, "土壤湿度超过阈值%d", soil_threshold);
         esp_32c3_send_data((u8 *)sendBuffer, 50);
+			Delay_ms(500);
 			//操作继电器
     }
     if (co2 > co2_threshold) {
         sprintf(sendBuffer, "二氧化碳超过阈值%d", co2_threshold);
         esp_32c3_send_data((u8 *)sendBuffer, 50);
+			Delay_ms(500);
         LED1_ON();
 			//让蜂鸣器报警几次?
     }
