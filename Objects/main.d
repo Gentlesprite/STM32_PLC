@@ -45,3 +45,4 @@
 .\objects\main.o: .\Hardware\OLED_I2C.h
 .\objects\main.o: D:\software\keil\mdk\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\main.o: D:\software\keil\mdk\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\main.o: .\Hardware\timer1.h

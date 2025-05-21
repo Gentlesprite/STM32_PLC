@@ -14,8 +14,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include "timer1.h"
 //设定的默认报警阈值
-u8 temp_threshold = 40;
+u8 humidity_t = 48;
+u8 temp_threshold = 20;
 int soil_threshold = 13;
 uint16_t co2_threshold = 400;
 extern u8 USART3_RX_FLAG;
@@ -158,16 +160,25 @@ int main(void)
 	usart1_init(115200);
 	usart2_init(9600);
 	usart3_init(115200);
+	tim1_init();
+	/*
 	esp_32c3_init();
 	esp_32c3_send_cmd("AT+CWQAP","0K",200);
 	esp_32c3_quit_init();
 	esp_32c3_start_init();
+	*/
+	
 	DHT11_Init();
 	OLED_CLS();              //清屏
 	InitDisplay();
+		
+		//LED2_ON();
+	//Delay_ms(500);
+	//LED2_OFF();
+	LED2_OFF();
 	while (1)
 	{
-if(USART3_RX_FLAG) {
+	if(USART3_RX_FLAG) {
     // 确保添加终止符不会越界
     if(USART3_RX_STA < sizeof(USART3_RX_BUF)) {
         USART3_RX_BUF[USART3_RX_STA] = '\0';
@@ -176,7 +187,9 @@ if(USART3_RX_FLAG) {
     }
     
     ParseCommand((char*)USART3_RX_BUF);
-    
+		LED2_OFF();
+		Delay_ms(500);
+		LED2_ON();
     // 清空接收缓冲区
     memset(USART3_RX_BUF, 0, sizeof(USART3_RX_BUF));
     USART3_RX_STA = 0;
@@ -186,11 +199,10 @@ if(USART3_RX_FLAG) {
 }
 		DHT11_Read_Data(&temperature,&humidity);
 		CO2GetData(&co2);
-		//send_normal_data_to_app();
 		displayDHT11TempAndHumi();
 		displaySoilMoisture();
 		displayCO2();
-		env_check(temperature,soilMoisture,co2);
+		//env_check(temperature,soilMoisture,co2);
 		}
 }
 
@@ -213,10 +225,10 @@ void env_check(u8 temp, int soil, uint16_t co2) {
         sprintf(sendBuffer, "二氧化碳超过阈值%d", co2_threshold);
         esp_32c3_send_data((u8 *)sendBuffer, 50);
 			Delay_ms(500);
-        LED1_ON();
+        //LED1_ON();
 			//让蜂鸣器报警几次?
     }
     if (co2 < co2_threshold) {
-        LED1_OFF();
+        //LED1_OFF();
     }
 }

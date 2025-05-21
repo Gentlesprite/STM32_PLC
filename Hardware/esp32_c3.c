@@ -106,7 +106,7 @@ void esp_32c3_ap(void)
     // 密码: 12345678
     // 通道: 5
     // 加密方式: WPA2_PSK (3)
-    esp_32c3_send_cmd("AT+CWSAP=\"LZY\",\"12345678\",5,3", "OK", 500);
+    esp_32c3_send_cmd("AT+CWSAP=\"AppleU\",\"12345678\",5,3", "OK", 500);
     
     // 启用多连接
     esp_32c3_send_cmd("AT+CIPMUX=1", "OK", 200);

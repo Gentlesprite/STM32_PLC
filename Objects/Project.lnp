@@ -37,6 +37,7 @@
 ".\objects\adc.o"
 ".\objects\oled_i2c.o"
 ".\objects\usart2.o"
+".\objects\timer1.o"
 ".\objects\main.o"
 ".\objects\stm32f10x_it.o"
 --library_type=microlib --strict --scatter ".\Objects\Project.sct"

@@ -26,22 +26,30 @@ Project File Date:  05/19/2025
 
 <h2>Output:</h2>
 Build target 'Target 1'
+compiling timer1.c...
+Hardware\timer1.h(5): warning:  #1-D: last line of file ends without a newline
+  #endif
+Hardware\timer1.c(48): warning:  #177-D: variable "sendBuffer" was declared but never referenced
+          char sendBuffer[50];
+Hardware\timer1.c: 2 warnings, 0 errors
 compiling main.c...
-User\main.c(115): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "u8 *"
+.\Hardware\timer1.h(5): warning:  #1-D: last line of file ends without a newline
+  #endif
+User\main.c(117): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "u8 *"
                                                 esp_32c3_send_data(sendBuffer, 50);
-User\main.c(124): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "u8 *"
+User\main.c(126): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "u8 *"
                                                 esp_32c3_send_data(sendBuffer, 50);
-User\main.c(133): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "u8 *"
+User\main.c(135): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "u8 *"
                                                 esp_32c3_send_data(sendBuffer, 50);
-User\main.c(138): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "u8 *"
+User\main.c(140): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "u8 *"
                         esp_32c3_send_data(sendBuffer, 50);
-User\main.c(142): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "u8 *"
+User\main.c(144): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "u8 *"
                         esp_32c3_send_data(sendBuffer, 100);
-User\main.c: 5 warnings, 0 errors
+User\main.c: 6 warnings, 0 errors
 linking...
-Program Size: Code=12740 RO-data=2652 RW-data=852 ZI-data=1900  
+Program Size: Code=12292 RO-data=2652 RW-data=852 ZI-data=1900  
 FromELF: creating hex file...
-".\Objects\Project.axf" - 0 Error(s), 5 Warning(s).
+".\Objects\Project.axf" - 0 Error(s), 8 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   E:\文件夹\文件\工商\大三下\无线通信技术\课程设计A\RTE
