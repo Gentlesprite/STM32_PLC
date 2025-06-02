@@ -3,7 +3,7 @@
 .\objects\dht11.o: Hardware\sys.h
 .\objects\dht11.o: .\Start\stm32f10x.h
 .\objects\dht11.o: .\Start\core_cm3.h
-.\objects\dht11.o: D:\software\keil\mdk\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\dht11.o: D:\Software\keil5\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\dht11.o: .\Start\system_stm32f10x.h
 .\objects\dht11.o: .\User\stm32f10x_conf.h
 .\objects\dht11.o: .\Library\stm32f10x_adc.h

@@ -119,7 +119,6 @@ void esp_32c3_ap(void)
 	
 	//透传模式下 开始发送数据的指令 这个指令之后就可以直接发数据了
 	esp_32c3_send_cmd("AT+CIPSEND","OK",50);
-
 }
 
 void esp_32c3_start_connect(void){
@@ -127,13 +126,13 @@ void esp_32c3_start_connect(void){
 	//让模块连接上路由（用户自己定义）
 //其中TP-LINK_123456为WiFi名，123456为密码，将其替换为你的WiFi
 //while();  在stm32中为等待含义
-	while(esp_32c3_send_cmd("AT+CWJAP=\"Reno\",\"luzhiyu666\"", "WIFI GOT IP",600));
+	while(esp_32c3_send_cmd("AT+CWJAP=\"AppleU\",\"12345678\"", "WIFI GOT IP",600));
 	
 	//=0：单路连接模式     =1：多路连接模式
 	esp_32c3_send_cmd("AT+CIPMUX=0","OK",20);
 	
 	//建立TCP连接  192.168.0.101和8080为TCP Server的ip(手机IP)和端口
-while(esp_32c3_send_cmd("AT+CIPSTART=\"TCP\",\"192.168.0.123\",8086","CONNECT",200));
+while(esp_32c3_send_cmd("AT+CIPSTART=\"TCP\",\"192.168.8.10\",8086","CONNECT",200));
 	
 	//是否开启透传模式  0：表示关闭 1：表示开启透传
 	esp_32c3_send_cmd("AT+CIPMODE=1","OK",200);
@@ -149,10 +148,10 @@ u8 esp_32c3_quit_connect(void)
 {
 	u8 result=1;
 	wifi_usart3_printf("+++");//退出透传模式
-	Delay_ms(1000);	//等待500ms太少 要1000ms才可以退出
+	Delay_ms(2000);	//等待500ms太少 要1000ms才可以退出
 	do
 	{
-Delay_ms(2000);	//等待2000ms
+		Delay_ms(2000);	//等待2000ms
 		result=esp_32c3_send_cmd((u8 *)"AT+RST",(u8 *)"OK",20);//判断退出透传是否成功.0-成功，1-失败	
 		if(result)
 			printf("quit_trans failed!\r\n");

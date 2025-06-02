@@ -30,8 +30,8 @@ void tim1_init(void) {
     
     // NVIC配置
     NVIC_InitStructure.NVIC_IRQChannel = TIM1_UP_IRQn; // TIM1中断通道不同！
-    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
-    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 2;
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
     NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
     NVIC_Init(&NVIC_InitStructure);
     
@@ -39,39 +39,99 @@ void tim1_init(void) {
     TIM_Cmd(TIM1, ENABLE);
 }
 
-
+extern uint8_t FAN_Ctrl;//排气扇控制标志位
+extern uint8_t WATER_Ctrl;//排气扇控制标志位
 void TIM1_UP_IRQHandler(void) {
     if (TIM_GetITStatus(TIM1, TIM_IT_Update) != RESET) {
         TIM_ClearITPendingBit(TIM1, TIM_IT_Update);
         
         // 环境检查
-        char sendBuffer[50];
-			if (humidity > humidity_t)LED2_ON();
-			if (humidity < humidity_t)LED2_OFF();
-        if (temperature > temp_threshold) {
-            //sprintf(sendBuffer, "温度超过阈值%d", temp_threshold);
-            //esp_32c3_send_data((u8 *)sendBuffer, 50);
-						//LED2_ON();
-	
-            // 操作继电器
-        }
-				if (temperature < temp_threshold)
-					{
-					//LED2_OFF();
-					}
-        if (soilMoisture > soil_threshold) {
+//        char sendBuffer[50];
+//			if(humidity > humidity_t)//开启
+//			{
+//				LED2_ON();
+//			}
+//			else
+//			{
+//				
+//				LED2_OFF();
+//			}	
+			if(temperature > temp_threshold) // 高温蜂鸣器报警
+				{
+	//            sprintf(sendBuffer, "温度超过阈值%d", temp_threshold);
+	//            esp_32c3_send_data((u8 *)sendBuffer, 50);
+					BUZZER_ON(); 
+				}
+			else 
+				{
+					BUZZER_OFF();
+				}
+				
+				
+        if(soilMoisture > soil_threshold)//缺水水泵启动
+				{
             //sprintf(sendBuffer, "土壤湿度超过阈值%d", soil_threshold);
             //esp_32c3_send_data((u8 *)sendBuffer, 50);
-            // 操作继电器
+					RELAY_ON();
         }
-        if (co2 > co2_threshold) {
+				else if(WATER_Ctrl == 0)
+				{
+					RELAY_OFF();
+				}
+				
+				
+        if(co2 > co2_threshold)//CO2浓度过高排气扇启动
+				{
             //sprintf(sendBuffer, "二氧化碳超过阈值%d", co2_threshold);
             //esp_32c3_send_data((u8 *)sendBuffer, 50);
-            //LED1_ON();
-            // 让蜂鸣器报警
+            FAN_ON();                                                  
         }
-        if (co2 < co2_threshold) {
-            //LED1_OFF();
-        }
+        else if(FAN_Ctrl ==0)
+				{
+						FAN_OFF();
+				}
+				
+    }
+}
+
+void TIM2_Init(void) {
+    TIM_TimeBaseInitTypeDef timer;
+    NVIC_InitTypeDef nvic;
+    
+    // 时钟使能
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+    
+		 // 定时器配置（1ms 中断）
+    timer.TIM_Prescaler = 7200 - 1;  // 72MHz / 7200 = 10kHz
+    timer.TIM_Period = 10 - 1;       // 10kHz / 10 = 1kHz (1ms)
+    timer.TIM_CounterMode = TIM_CounterMode_Up;
+    TIM_TimeBaseInit(TIM2, &timer);
+    
+    // 中断优先级设置
+    nvic.NVIC_IRQChannel = TIM2_IRQn;
+    nvic.NVIC_IRQChannelPreemptionPriority = 1;  // 抢占优先级1
+    nvic.NVIC_IRQChannelSubPriority = 0;
+    nvic.NVIC_IRQChannelCmd = ENABLE;
+    NVIC_Init(&nvic);
+    
+    TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
+    TIM_Cmd(TIM2, ENABLE);
+}
+
+
+extern uint8_t Timer2_Sensor_Counter;//传感器 200ms
+extern uint8_t Timer2_OLEDRefresh_Counter;//定时器2计时变量 3ms
+extern uint16_t LED_Hint_Counter ;//LED提示灯0-600s
+extern uint8_t Wifi_Rx_Counter ;//数据接收轮询任务
+void TIM2_IRQHandler(void) {
+		
+    if (TIM_GetITStatus(TIM2, TIM_IT_Update)) {
+        TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
+//				static uint8_t tick = 0;
+//        Timer2_Sensor_Counter = (++tick) % 20; // 传感器 200ms 自动归零
+			  ++Timer2_Sensor_Counter ;
+				++Timer2_OLEDRefresh_Counter;//定时器2计时变量 3ms
+				++Wifi_Rx_Counter;//WiFi数据接收50ms轮询
+			if(--LED_Hint_Counter <= 0) LED2_OFF();//LED提示灯0-600s
     }
 }

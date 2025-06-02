@@ -84,7 +84,6 @@ void USART1_IRQHandler(void)
 	}
 	if (Serial_RxData == 'A')
 		LED2_ON();
-	
 
 	if (Serial_RxData == 'B')
 		LED2_OFF();

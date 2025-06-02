@@ -34,7 +34,7 @@ void usart3_init(u32 bound) //bound:波特率
 	USART_ITConfig(USART3, USART_IT_IDLE, ENABLE);//开启串口3接收中断   
 	NVIC_InitStructure.NVIC_IRQChannel = USART3_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=2 ;//抢占优先级2
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 3;		//子优先级3
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;		//子优先级0
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;	//IRQ通道使能
 	NVIC_Init(&NVIC_InitStructure);	//初始化串口3中断通道(根据指定的串口3中断通道（USART3_IRQn）参数初始化NVIC寄存器)
 }
@@ -67,24 +67,23 @@ u8 USART3_RX_BUF[USART3_MAX_RECV_LEN]; 	//接收缓冲,最大USART3_MAX_RECV_LEN个字节
 u16 USART3_RX_STA=0; //接收到的数据状态
 void USART3_IRQHandler(void)
 {
-    if(USART_GetITStatus(USART3, USART_IT_RXNE) != RESET) {
-        u8 res = USART_ReceiveData(USART3);
-        // 简单处理LED控制
-        if(res == 'A') LED2_ON();
-        if(res == 'B') LED2_OFF();
-        
-        // 仅缓冲数据，不处理
-        if(USART3_RX_STA < USART3_MAX_RECV_LEN) {
-            USART3_RX_BUF[USART3_RX_STA++] = res;
+    if(USART_GetITStatus(USART3, USART_IT_RXNE) != RESET) {   //接收寄存器非空
+					u8 res = USART_ReceiveData(USART3); //读取接收到的字节(USART_ReceiveData)
+					// 简单处理LED控制
+					if(res == 'A') LED2_ON();
+					if(res == 'B') LED2_OFF();
+					
+					// 将数据存入缓冲区USART3_RX_BUF
+					if(USART3_RX_STA < USART3_MAX_RECV_LEN) {
+							USART3_RX_BUF[USART3_RX_STA++] = res;
         }
-				USART_ClearITPendingBit(USART3, USART_IT_RXNE);
-
+				USART_ClearITPendingBit(USART3, USART_IT_RXNE); //清除中断标志
     }
     
-    if(USART_GetITStatus(USART3, USART_IT_IDLE) != RESET) {
-        USART_ReceiveData(USART3); // 清除标志
-        USART3_RX_FLAG = 1; // 设置标志让主循环处理
-			USART_ClearITPendingBit(USART3, USART_IT_IDLE);
+    if(USART_GetITStatus(USART3, USART_IT_IDLE) != RESET) { //IDLE中断处理（检测到总线空闲）
+			USART_ReceiveData(USART3); //读取数据寄存器以清除标志（虽然数据可能无效）
+			USART3_RX_FLAG = 1; // 设置接收完成标志USART3_RX_FLAG
+			USART_ClearITPendingBit(USART3, USART_IT_IDLE);//清除中断标志
     }
 }  
 

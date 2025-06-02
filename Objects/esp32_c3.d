@@ -2,7 +2,7 @@
 .\objects\esp32_c3.o: Hardware\esp32_c3.h
 .\objects\esp32_c3.o: .\Start\stm32f10x.h
 .\objects\esp32_c3.o: .\Start\core_cm3.h
-.\objects\esp32_c3.o: D:\software\keil\mdk\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\esp32_c3.o: D:\Software\keil5\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\esp32_c3.o: .\Start\system_stm32f10x.h
 .\objects\esp32_c3.o: .\User\stm32f10x_conf.h
 .\objects\esp32_c3.o: .\Library\stm32f10x_adc.h
@@ -31,7 +31,7 @@
 .\objects\esp32_c3.o: .\Library\misc.h
 .\objects\esp32_c3.o: .\System\delay.h
 .\objects\esp32_c3.o: Hardware\usart1.h
-.\objects\esp32_c3.o: D:\software\keil\mdk\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\esp32_c3.o: D:\Software\keil5\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\esp32_c3.o: Hardware\usart3.h
-.\objects\esp32_c3.o: D:\software\keil\mdk\ARM\ARMCC\Bin\..\include\stdarg.h
-.\objects\esp32_c3.o: D:\software\keil\mdk\ARM\ARMCC\Bin\..\include\string.h
+.\objects\esp32_c3.o: D:\Software\keil5\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\esp32_c3.o: D:\Software\keil5\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
